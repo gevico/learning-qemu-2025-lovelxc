@@ -1,0 +1,15 @@
+{
+    "clangd.path": "clangd",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build",
+        "--background-index",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=never"
+    ],
+    "editor.semanticHighlighting.enabled": true,
+    "files.associations": {
+        "*.h": "c",
+        "*.tcc": "cpp"
+    }
+}

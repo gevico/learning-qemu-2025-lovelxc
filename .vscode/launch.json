@@ -1,0 +1,42 @@
+{
+    // VS Code 调试配置版本
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "test-board-g233 Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            // 调试程序的完整路径 (QEMU可执行文件)
+            "program": "${workspaceFolder}/build/qemu-system-riscv64",
+            // 调试器类型，通常使用 gdb
+            "MIMode": "gdb",
+            // 调试器路径，请根据您的系统配置进行调整 (例如: /usr/bin/gdb)
+            "miDebuggerPath": "gdb", 
+            // 必需：设置工作目录到您指定的位置
+            "cwd": "${workspaceFolder}/build/tests/gevico/tcg/riscv64-softmmu",
+            
+            // 传递给 QEMU 可执行文件的命令行参数
+            "args": [
+                "-M", "g233",
+                "-m", "2G",
+                "-display", "none",
+                "-semihosting",
+                "-serial", "stdio",
+                "-d", "int",
+                "-D", "qemu-riscv64.log",
+                "-device", "loader,file=test-board-g233",
+                "-blockdev", "driver=file,filename=disk0.img,node-name=flash0",
+                "-blockdev", "driver=file,filename=disk1.img,node-name=flash1"
+            ],
+            
+            "setupCommands": [
+                {
+                    "description": "Enable pretty printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build QEMU Project" // 如果需要先执行编译任务，可在此处指定
+        }
+    ]
+}

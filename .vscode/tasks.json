@@ -1,0 +1,23 @@
+{
+    // VS Code 任务配置版本
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build QEMU Project",
+            "type": "shell",
+            // 实际执行的命令
+            "command": "ninja -C build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                // 启动任务时显示终端
+                "reveal": "always",
+                "panel": "new"
+            },
+            // 使用空的 problemMatcher，因为 ninja/make 的输出通常不需要默认的问题匹配
+            "problemMatcher": []
+        }
+    ]
+}

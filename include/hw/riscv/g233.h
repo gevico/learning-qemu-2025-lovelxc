@@ -52,7 +52,7 @@ typedef struct G233MachineState {
 
     /*< public >*/
     G233SoCState soc;
-
+    const MemMapEntry *memmap;
 } G233MachineState;
 
 enum {
